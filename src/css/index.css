@@ -2,8 +2,7 @@
    AGILIS CAPABILITY PARTNERS — Design System
    ============================================ */
 
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+/* Google Fonts — loaded via <link> in base.njk for performance */
 
 /* ── CSS Custom Properties ── */
 :root {
@@ -851,14 +850,18 @@ p {
   border-radius: var(--radius-xl);
   overflow: hidden;
   margin-top: var(--space-4xl);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .family-section__image {
   width: 100%;
-  height: 500px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 30%;
   border-radius: var(--radius-xl);
+  display: block;
 }
 
 .family-section__overlay {
@@ -867,15 +870,16 @@ p {
   left: 0;
   right: 0;
   padding: var(--space-2xl) var(--space-2xl) var(--space-xl);
-  background: linear-gradient(transparent, rgba(10, 22, 40, 0.85));
+  background: linear-gradient(transparent 0%, rgba(10, 22, 40, 0.7) 60%, rgba(10, 22, 40, 0.9) 100%);
   border-radius: 0 0 var(--radius-xl) var(--radius-xl);
 }
 
 .family-section__overlay p {
   color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-style: italic;
   margin: 0;
+  max-width: 600px;
 }
 
 /* ── Timeline ── */
@@ -1917,4 +1921,104 @@ p {
 
 .testimonial__author strong {
   color: #fff;
+}
+
+/* ── Page Load Animation ── */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.page-loader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.page-loader__mark {
+  width: 60px;
+  height: 60px;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.6rem;
+  color: #fff;
+  animation: loader-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes loader-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.08); opacity: 0.8; }
+}
+
+/* ── Back to Top Button ── */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gradient-accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--transition-base);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Accessibility: Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero__particle {
+    display: none;
+  }
+
+  .page-loader {
+    display: none;
+  }
 }

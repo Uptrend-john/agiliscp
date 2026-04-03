@@ -13,13 +13,48 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "{{ site.title }}",
+    "description": "{{ site.description }}",
+    "url": "{{ site.url }}",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Columbus",
+      "addressRegion": "OH",
+      "addressCountry": "US"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "{{ site.founder.name }}",
+      "jobTitle": "{{ site.founder.title }}",
+      "url": "{{ site.linkedin }}"
+    },
+    "sameAs": ["{{ site.linkedin }}"],
+    "email": "{{ site.email }}"
+  }
+  </script>
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+  
+  <!-- Font Loading (preconnect for performance) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
   <!-- Styles -->
   <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
+  <!-- Page Loader -->
+  <div class="page-loader" id="page-loader">
+    <div class="page-loader__mark">A</div>
+  </div>
+  
   {% include "partials/nav.njk" %}
   
   <main id="main-content">
@@ -28,9 +63,34 @@
   
   {% include "partials/footer.njk" %}
   
-  <!-- Scroll animations -->
+  <!-- Back to Top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+  
+  <!-- Scripts -->
   <script>
-    // Navigation scroll effect
+    // ── Page Loader ──
+    (function() {
+      const loader = document.getElementById('page-loader');
+      if (loader) {
+        // Skip loader on subsequent navigations in same session
+        if (sessionStorage.getItem('acp-loaded')) {
+          loader.style.display = 'none';
+        } else {
+          window.addEventListener('load', function() {
+            setTimeout(function() {
+              loader.classList.add('loaded');
+              sessionStorage.setItem('acp-loaded', '1');
+            }, 300);
+          });
+        }
+      }
+    })();
+
+    // ── Navigation ──
     const nav = document.querySelector('.nav');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
@@ -63,7 +123,18 @@
       });
     }
 
-    // Scroll animations
+    // ── Active Nav State ──
+    (function() {
+      const currentPath = window.location.pathname;
+      document.querySelectorAll('.nav__link').forEach(function(link) {
+        const href = link.getAttribute('href');
+        if (href === currentPath || (href !== '/' && currentPath.startsWith(href))) {
+          link.classList.add('nav__link--active');
+        }
+      });
+    })();
+
+    // ── Scroll Animations ──
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -74,7 +145,7 @@
 
     document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-    // Counter animation
+    // ── Counter Animation ──
     function animateCounters() {
       document.querySelectorAll('[data-count]').forEach(el => {
         const target = parseInt(el.getAttribute('data-count'));
@@ -106,6 +177,22 @@
 
     const statsSection = document.querySelector('.stats-bar, .hero__stats');
     if (statsSection) counterObserver.observe(statsSection);
+
+    // ── Back to Top ──
+    (function() {
+      const btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 600) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      });
+      btn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
   </script>
 </body>
 </html>
