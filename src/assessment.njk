@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+pageTitle: "Business Transformation Readiness Assessment"
+pageDescription: "Take our free 10-question assessment to evaluate your organization's readiness for business transformation and get personalized recommendations."
+permalink: /assessment/
+---
+
+<div class="page-header" id="assessment-header">
+  <div class="container">
+    <span class="section-label" style="color: var(--color-teal-light);">Free Interactive Tool</span>
+    <h1>Transformation Readiness <span class="accent">Assessment</span></h1>
+    <p>Answer 10 questions to evaluate your organization across 5 critical dimensions. Get an instant scorecard with personalized recommendations.</p>
+  </div>
+</div>
+
+<section class="section" id="assessment-section">
+  <div class="container">
+    <div class="assessment" id="assessment-app">
+      <!-- Assessment loads here via JS -->
+      <div class="text-center" style="padding: var(--space-3xl);">
+        <p style="color: var(--color-text-secondary);">Loading assessment...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="/js/assessment.js"></script>

@@ -1,0 +1,61 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "insights"
+    label: "Insights / Blog"
+    folder: "src/insights"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Category", name: "category", widget: "select", options: ["Strategy", "Technology", "IV&V", "Process", "Change Management", "Project Management"] }
+      - { label: "Featured Image", name: "image", widget: "image", required: false, default: "/assets/images/blog-default.png" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/post.njk" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "services"
+    label: "Services"
+    file: "src/_data/services.json"
+    fields:
+      - label: "Services"
+        name: "services"
+        widget: "list"
+        fields:
+          - { label: "ID", name: "id", widget: "string" }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Icon", name: "icon", widget: "select", options: ["compass", "shield-check", "refresh", "cpu", "calendar", "users"] }
+          - { label: "Summary", name: "summary", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - label: "Deliverables"
+            name: "deliverables"
+            widget: "list"
+            field: { label: "Deliverable", name: "item", widget: "string" }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General Settings"
+        name: "site"
+        file: "src/_data/site.json"
+        fields:
+          - { label: "Site Title", name: "title", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Site URL", name: "url", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string", required: false }
+          - { label: "Location", name: "location", widget: "string" }
+          - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+          - label: "Founder"
+            name: "founder"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Headshot", name: "headshot", widget: "image" }

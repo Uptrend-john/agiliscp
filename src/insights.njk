@@ -1,0 +1,40 @@
+---
+layout: layouts/base.njk
+pageTitle: "Insights"
+pageDescription: "Perspectives on business transformation, technology strategy, and organizational change from Agilis Capability Partners."
+permalink: /insights/
+---
+
+<div class="page-header" id="insights-header">
+  <div class="container">
+    <span class="section-label" style="color: var(--color-teal-light);">Insights</span>
+    <h1>Perspectives from <span class="accent">the Field</span></h1>
+    <p>Practical insights on transformation, technology decisions, and leading change — drawn from decades of experience.</p>
+  </div>
+</div>
+
+<section class="section" id="insights-list">
+  <div class="container">
+    <div class="grid grid--3">
+      {% for post in collections.insights %}
+      <article class="insight-card animate-on-scroll" id="insight-card-{{ loop.index }}">
+        <img class="insight-card__image" src="{{ post.data.image or '/assets/images/blog-default.png' }}" alt="{{ post.data.title }}" loading="lazy">
+        <div class="insight-card__body">
+          <span class="insight-card__category">{{ post.data.category }}</span>
+          <h3 class="insight-card__title">
+            <a href="{{ post.url }}">{{ post.data.title }}</a>
+          </h3>
+          <p class="insight-card__excerpt">{{ post.content | excerpt }}</p>
+          <span class="insight-card__meta">{{ post.data.date | dateFormat }}</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    
+    {% if collections.insights.length == 0 %}
+    <div class="text-center" style="padding: var(--space-3xl);">
+      <p style="color: var(--color-text-secondary); font-size: 1.1rem;">New insights coming soon. Check back or <a href="/contact/">get in touch</a> to stay informed.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>

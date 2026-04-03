@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ pageTitle or title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ pageDescription or site.description }}">
+  <meta name="author" content="{{ site.founder.name }}">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ pageTitle or title }} | {{ site.title }}">
+  <meta property="og:description" content="{{ pageDescription or site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+  {% include "partials/nav.njk" %}
+  
+  <main id="main-content">
+    {{ content | safe }}
+  </main>
+  
+  {% include "partials/footer.njk" %}
+  
+  <!-- Scroll animations -->
+  <script>
+    // Navigation scroll effect
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('nav--scrolled');
+      } else {
+        nav.classList.remove('nav--scrolled');
+      }
+    });
+
+    // Mobile menu
+    const toggle = document.querySelector('.nav__toggle');
+    const links = document.querySelector('.nav__links');
+    const overlay = document.querySelector('.nav__overlay');
+    
+    if (toggle) {
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        links.classList.toggle('open');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = links.classList.contains('open') ? 'hidden' : '';
+      });
+    }
+    
+    if (overlay) {
+      overlay.addEventListener('click', () => {
+        toggle.classList.remove('active');
+        links.classList.remove('open');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // Counter animation
+    function animateCounters() {
+      document.querySelectorAll('[data-count]').forEach(el => {
+        const target = parseInt(el.getAttribute('data-count'));
+        const suffix = el.getAttribute('data-suffix') || '';
+        const duration = 2000;
+        const start = 0;
+        const startTime = performance.now();
+
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          const current = Math.round(start + (target - start) * easeOut);
+          el.textContent = current + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      });
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          counterObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const statsSection = document.querySelector('.stats-bar, .hero__stats');
+    if (statsSection) counterObserver.observe(statsSection);
+  </script>
+</body>
+</html>

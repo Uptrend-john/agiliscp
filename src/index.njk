@@ -1,0 +1,196 @@
+---
+layout: layouts/base.njk
+pageTitle: "Business Transformation Consulting"
+pageDescription: "Agilis Capability Partners helps organizations navigate complex transformations through expert advisory, IV&V, process redesign, technology selection, and change management."
+---
+
+<!-- Hero Section -->
+<section class="hero" id="hero">
+  <div class="hero__bg">
+    <img src="/assets/images/hero-bg.png" alt="" loading="eager">
+  </div>
+  
+  <!-- Floating particles -->
+  <div class="hero__particles">
+    <div class="hero__particle" style="left:10%;animation-duration:8s;animation-delay:0s;width:3px;height:3px;"></div>
+    <div class="hero__particle" style="left:20%;animation-duration:12s;animation-delay:2s;width:5px;height:5px;"></div>
+    <div class="hero__particle" style="left:35%;animation-duration:10s;animation-delay:4s;"></div>
+    <div class="hero__particle" style="left:50%;animation-duration:14s;animation-delay:1s;width:6px;height:6px;"></div>
+    <div class="hero__particle" style="left:65%;animation-duration:9s;animation-delay:3s;"></div>
+    <div class="hero__particle" style="left:80%;animation-duration:11s;animation-delay:5s;width:3px;height:3px;"></div>
+    <div class="hero__particle" style="left:90%;animation-duration:13s;animation-delay:2s;"></div>
+  </div>
+  
+  <div class="container">
+    <div class="hero__content">
+      <div class="hero__badge">
+        <span class="dot"></span>
+        Now Accepting Engagements
+      </div>
+      <h1>Accelerating Business <span class="accent">Transformation</span> Through Expert Partnership</h1>
+      <p class="hero__desc">
+        Agilis Capability Partners brings 25+ years of enterprise leadership and consulting expertise to help organizations navigate complex transformations — from strategy through execution.
+      </p>
+      <div class="hero__actions">
+        <a href="/services/" class="btn btn--primary btn--lg" id="hero-cta-services">
+          Explore Services <span class="arrow">→</span>
+        </a>
+        <a href="/assessment/" class="btn btn--secondary btn--lg" id="hero-cta-assessment">
+          Free Assessment
+        </a>
+      </div>
+    </div>
+    
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <div class="hero__stat-number" data-count="25" data-suffix="+">0</div>
+        <div class="hero__stat-label">Years Experience</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-number" data-count="6" data-suffix="">0</div>
+        <div class="hero__stat-label">Practice Areas</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-number" data-count="500" data-suffix="M+">0</div>
+        <div class="hero__stat-label">Projects Managed ($)</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-number" data-count="100" data-suffix="%">0</div>
+        <div class="hero__stat-label">Independent & Unbiased</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Overview -->
+<section class="section" id="services-overview">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: var(--space-3xl);">
+      <span class="section-label">What We Do</span>
+      <h2 class="section-title">Capabilities That Drive Results</h2>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        Six integrated practice areas designed to meet organizations wherever they are on their transformation journey.
+      </p>
+    </div>
+    
+    <div class="grid grid--3">
+      {% for service in services %}
+      <div class="service-card animate-on-scroll" id="service-card-{{ service.id }}">
+        <div class="service-card__icon">
+          {% if service.icon == "compass" %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          {% elif service.icon == "shield-check" %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          {% elif service.icon == "refresh" %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+          {% elif service.icon == "cpu" %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg>
+          {% elif service.icon == "calendar" %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+          {% elif service.icon == "users" %}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          {% endif %}
+        </div>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.summary }}</p>
+        <a href="/services/#{{ service.id }}" class="service-card__link">
+          Learn More <span class="arrow">→</span>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Assessment CTA Banner -->
+<section class="section" id="assessment-cta-section">
+  <div class="container">
+    <div class="assessment-cta animate-on-scroll">
+      <div class="assessment-cta__bg">
+        <img src="/assets/images/assessment-banner.png" alt="">
+      </div>
+      <div class="assessment-cta__content">
+        <span class="section-label" style="color: var(--color-teal-light);">Interactive Tool</span>
+        <h2>How Ready Is Your Organization for Transformation?</h2>
+        <p>Take our free 10-question Business Transformation Readiness Assessment and get a personalized scorecard with actionable recommendations.</p>
+        <a href="/assessment/" class="btn btn--primary btn--lg" id="assessment-cta-btn">
+          Start Free Assessment <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Teaser -->
+<section class="section section--dark" id="about-teaser">
+  <div class="container">
+    <div class="bio" style="align-items: center;">
+      <div class="bio__photo-wrap animate-on-scroll">
+        <div class="bio__photo">
+          <img src="{{ site.founder.headshot }}" alt="{{ site.founder.name }}">
+        </div>
+        <div class="bio__accent"></div>
+      </div>
+      <div class="bio__content animate-on-scroll">
+        <span class="section-label" style="color: var(--color-teal-light);">Meet the Founder</span>
+        <h2 style="color: #fff;">Steven Paull</h2>
+        <p class="bio__title-role" style="color: var(--color-teal-light);">Founder & Managing Partner</p>
+        <p style="color: var(--color-text-on-dark-muted);">
+          With over 25 years of experience spanning enterprise technology leadership, management consulting, and business process transformation, Steve brings a rare combination of strategic vision and operational execution to every engagement.
+        </p>
+        <p style="color: var(--color-text-on-dark-muted);">
+          Most recently serving as Senior Vice President of Enterprise Applications at Victoria's Secret & Co., Steve has led transformational initiatives across retail, higher education, and healthcare industries.
+        </p>
+        <a href="/about/" class="btn btn--secondary" id="about-cta-btn" style="margin-top: var(--space-md);">
+          Full Background <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Insights Teaser -->
+<section class="section section--alt" id="insights-teaser">
+  <div class="container">
+    <div class="text-center" style="margin-bottom: var(--space-3xl);">
+      <span class="section-label">Insights</span>
+      <h2 class="section-title">Latest Thinking</h2>
+      <p class="section-subtitle" style="margin: 0 auto;">
+        Perspectives on transformation, technology, and organizational change from the field.
+      </p>
+    </div>
+    
+    <div class="grid grid--3">
+      {% for post in collections.insights | limit(3) %}
+      <article class="insight-card animate-on-scroll" id="insight-{{ loop.index }}">
+        <img class="insight-card__image" src="{{ post.data.image or '/assets/images/blog-default.png' }}" alt="{{ post.data.title }}">
+        <div class="insight-card__body">
+          <span class="insight-card__category">{{ post.data.category }}</span>
+          <h3 class="insight-card__title">
+            <a href="{{ post.url }}">{{ post.data.title }}</a>
+          </h3>
+          <p class="insight-card__excerpt">{{ post.content | excerpt }}</p>
+          <span class="insight-card__meta">{{ post.data.date | dateFormat }}</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    
+    <div class="text-center" style="margin-top: var(--space-2xl);">
+      <a href="/insights/" class="btn btn--outline" id="insights-view-all">View All Insights</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact CTA Strip -->
+<section class="section section--dark" id="contact-cta" style="padding: var(--space-4xl) 0;">
+  <div class="container text-center">
+    <h2 style="color: #fff; margin-bottom: var(--space-md);">Ready to Accelerate Your Transformation?</h2>
+    <p style="color: var(--color-text-on-dark-muted); font-size: 1.1rem; max-width: 550px; margin: 0 auto var(--space-xl);">
+      Let's discuss how Agilis Capability Partners can help your organization achieve its most critical objectives.
+    </p>
+    <a href="/contact/" class="btn btn--primary btn--lg" id="final-cta-btn">
+      Schedule a Consultation <span class="arrow">→</span>
+    </a>
+  </div>
+</section>

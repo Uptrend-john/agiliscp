@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+---
+<div class="page-header">
+  <div class="container">
+    <span class="section-label">Insights</span>
+    <h1>{{ title }}</h1>
+    <div class="post__meta">
+      <span class="post__category">{{ category }}</span>
+      <span>{{ date | dateFormat }}</span>
+    </div>
+  </div>
+</div>
+
+<article class="post">
+  <div class="post__content">
+    {{ content | safe }}
+  </div>
+  
+  <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border); text-align: center;">
+    <a href="/insights/" class="btn btn--outline">← Back to All Insights</a>
+  </div>
+</article>

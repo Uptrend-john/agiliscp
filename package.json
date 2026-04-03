@@ -1,0 +1,13 @@
+{
+  "name": "agilis-capability-partners",
+  "version": "1.0.0",
+  "description": "Agilis Capability Partners, LLC — Consulting Website",
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve --port=8080",
+    "build": "npx @11ty/eleventy",
+    "clean": "rimraf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
