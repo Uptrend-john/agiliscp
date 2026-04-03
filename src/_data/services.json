@@ -3,6 +3,7 @@
     "id": "advisory",
     "title": "Advisory Services",
     "icon": "compass",
+    "image": "/assets/images/service-advisory.png",
     "summary": "Strategic guidance for complex business decisions and enterprise initiatives.",
     "description": "Navigate critical business decisions with confidence. Our advisory services provide senior-level strategic counsel to executive teams facing complex transformation challenges, technology investments, and organizational pivots.",
     "deliverables": [
@@ -17,6 +18,7 @@
     "id": "ivv",
     "title": "Independent Validation & Verification",
     "icon": "shield-check",
+    "image": "/assets/images/service-ivv.png",
     "summary": "Unbiased project health checks and quality assurance for critical initiatives.",
     "description": "Protect your investment with objective, third-party validation. Our IV&V services provide unbiased assessment of project health, risk identification, and actionable recommendations to keep your most critical initiatives on track.",
     "deliverables": [
@@ -31,6 +33,7 @@
     "id": "process",
     "title": "Business Process Transformation",
     "icon": "refresh",
+    "image": "/assets/images/service-process.png",
     "summary": "Redesigning operations for efficiency, scalability, and competitive advantage.",
     "description": "Transform how your organization operates. Leveraging Lean Six Sigma methodologies and deep operational expertise, we redesign business processes to eliminate waste, reduce cycle times, and create scalable, sustainable operations.",
     "deliverables": [
@@ -45,6 +48,7 @@
     "id": "technology",
     "title": "Technology & Software Selection",
     "icon": "cpu",
+    "image": "/assets/images/service-technology.png",
     "summary": "Vendor-neutral evaluation and selection of enterprise technology solutions.",
     "description": "Make technology decisions with clarity and confidence. Our vendor-neutral approach ensures you select the right platforms and tools for your unique needs — from ERP and HCM to CRM and beyond — without bias or hidden agendas.",
     "deliverables": [
@@ -59,6 +63,7 @@
     "id": "project-management",
     "title": "Project Management",
     "icon": "calendar",
+    "image": "/assets/images/service-pm.png",
     "summary": "Delivery assurance for your most critical and complex initiatives.",
     "description": "Ensure your initiatives deliver on time, on budget, and on value. Our experienced project leaders bring structure, discipline, and accountability to complex programs — from enterprise system implementations to organizational restructurings.",
     "deliverables": [
@@ -73,6 +78,7 @@
     "id": "change-management",
     "title": "Organizational Change Management",
     "icon": "users",
+    "image": "/assets/images/service-change.png",
     "summary": "Driving adoption and minimizing resistance through the people side of change.",
     "description": "Technology and process changes only succeed when people embrace them. Our change management practice ensures your workforce is prepared, engaged, and equipped to adopt new ways of working — maximizing ROI on every transformation initiative.",
     "deliverables": [
